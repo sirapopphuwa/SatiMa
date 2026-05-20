@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { GradientScreen } from '@/components/GradientScreen';
 import { Button } from '@/components/Button';
-import { Radius, Shadow, Spacing, Typography } from '@/constants/theme';
+import { Font, Radius, Shadow, Spacing, Typography } from '@/constants/theme';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useBellAlarms } from '@/hooks/useBellAlarms';
 import { countRingsPerDay, useIntervalBell } from '@/hooks/useIntervalBell';
@@ -179,7 +179,7 @@ function IntervalBellModal({
                   >
                     <Text style={[
                       Typography.caption,
-                      { color: intervalMin === opt.value ? '#fff' : colors.textSecondary, fontWeight: '700' },
+                      { color: intervalMin === opt.value ? '#fff' : colors.textSecondary, fontFamily: Font.bold },
                     ]}>
                       {opt.label}
                     </Text>
@@ -213,7 +213,7 @@ function IntervalBellModal({
                       <Text style={{ fontSize: 22 }}>{p.icon}</Text>
                       <Text style={[
                         Typography.bodyMedium,
-                        { color: active ? '#fff' : colors.text, fontWeight: '700' },
+                        { color: active ? '#fff' : colors.text, fontFamily: Font.bold },
                       ]}>
                         {p.label}
                       </Text>
@@ -242,7 +242,7 @@ function IntervalBellModal({
                 <Text style={{ fontSize: 16 }}>⚙️</Text>
                 <Text style={[
                   Typography.bodyMedium,
-                  { color: presetId === 'custom' ? colors.primary : colors.textSecondary, fontWeight: '600' },
+                  { color: presetId === 'custom' ? colors.primary : colors.textSecondary, fontFamily: Font.semibold },
                 ]}>
                   กำหนดเอง
                 </Text>
@@ -252,7 +252,7 @@ function IntervalBellModal({
               {presetId === 'custom' && (
                 <View style={[styles.customPickers, { backgroundColor: colors.background }]}>
                   {/* Start hour */}
-                  <Text style={[Typography.caption, { color: colors.textSecondary, marginBottom: 6, fontWeight: '600' }]}>
+                  <Text style={[Typography.caption, { color: colors.textSecondary, marginBottom: 6, fontFamily: Font.semibold }]}>
                     🕐 เริ่มเวลา
                   </Text>
                   <ScrollView
@@ -276,7 +276,7 @@ function IntervalBellModal({
                         >
                           <Text style={[
                             Typography.caption,
-                            { color: active ? '#fff' : colors.text, fontWeight: '700' },
+                            { color: active ? '#fff' : colors.text, fontFamily: Font.bold },
                           ]}>
                             {String(h).padStart(2, '0')}:00
                           </Text>
@@ -286,7 +286,7 @@ function IntervalBellModal({
                   </ScrollView>
 
                   {/* End hour */}
-                  <Text style={[Typography.caption, { color: colors.textSecondary, marginBottom: 6, fontWeight: '600' }]}>
+                  <Text style={[Typography.caption, { color: colors.textSecondary, marginBottom: 6, fontFamily: Font.semibold }]}>
                     🕙 สิ้นสุดเวลา
                   </Text>
                   <ScrollView
@@ -310,7 +310,7 @@ function IntervalBellModal({
                         >
                           <Text style={[
                             Typography.caption,
-                            { color: active ? '#fff' : colors.text, fontWeight: '700' },
+                            { color: active ? '#fff' : colors.text, fontFamily: Font.bold },
                           ]}>
                             {String(h).padStart(2, '0')}:00
                           </Text>
@@ -426,7 +426,7 @@ function IntervalBellCard({
               { backgroundColor: bell.is_active ? '#34C37A20' : colors.border + '50' },
             ]}>
               <View style={[styles.statusDot, { backgroundColor: bell.is_active ? '#34C37A' : colors.textSecondary }]} />
-              <Text style={[Typography.small, { color: bell.is_active ? '#34C37A' : colors.textSecondary, fontWeight: '600' }]}>
+              <Text style={[Typography.small, { color: bell.is_active ? '#34C37A' : colors.textSecondary, fontFamily: Font.semibold }]}>
                 {bell.is_active ? 'เปิดใช้งาน' : 'ปิดอยู่'}
               </Text>
             </View>
@@ -435,7 +435,7 @@ function IntervalBellCard({
               style={[styles.editBtn, { backgroundColor: colors.primary + '15' }]}
             >
               <Edit2 size={13} color={colors.primary} />
-              <Text style={[Typography.small, { color: colors.primary, fontWeight: '600' }]}>แก้ไข</Text>
+              <Text style={[Typography.small, { color: colors.primary, fontFamily: Font.semibold }]}>แก้ไข</Text>
             </Pressable>
           </View>
         </View>
@@ -591,7 +591,7 @@ function AddAlarmModal({
                   },
                 ]}
               >
-                <Text style={[Typography.caption, { color: soundType === opt.type ? '#fff' : colors.textSecondary, fontWeight: '600' }]}>
+                <Text style={[Typography.caption, { color: soundType === opt.type ? '#fff' : colors.textSecondary, fontFamily: Font.semibold }]}>
                   {opt.label}{opt.isPremiumOnly && !isPremium ? ' 🔒' : ''}
                 </Text>
               </Pressable>
@@ -615,7 +615,7 @@ function AddAlarmModal({
                   },
                 ]}
               >
-                <Text style={[Typography.small, { color: repeatDays.includes(i) ? '#fff' : colors.textSecondary, fontWeight: '600' }]}>
+                <Text style={[Typography.small, { color: repeatDays.includes(i) ? '#fff' : colors.textSecondary, fontFamily: Font.semibold }]}>
                   {label}
                 </Text>
               </Pressable>
@@ -667,11 +667,11 @@ export default function BellScreen() {
         >
           <View style={styles.heroRow}>
             <View>
-              <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, fontWeight: '500' }}>
+              <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, fontFamily: Font.medium }}>
                 ตั้งเวลาเตือนสติ
               </Text>
               <Text style={styles.heroTitle}>ระฆังเตือนสติ 🔔</Text>
-              <Text style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, marginTop: 4 }}>
+              <Text style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, marginTop: 4, fontFamily: Font.regular }}>
                 หยุดพักและหายใจลึกๆ สักครู่
               </Text>
             </View>
@@ -685,7 +685,7 @@ export default function BellScreen() {
             {['หายใจเข้า', 'กลั้น', 'หายใจออก'].map((s, i) => (
               <View key={i} style={styles.breathItem}>
                 <View style={[styles.breathDot, { backgroundColor: 'rgba(255,255,255,0.3)' }]} />
-                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 11 }}>{s}</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 11, fontFamily: Font.regular }}>{s}</Text>
               </View>
             ))}
           </View>
@@ -714,7 +714,7 @@ export default function BellScreen() {
             </View>
             {!isPremium && (
               <View style={[styles.limitBadge, { backgroundColor: colors.primary + '15' }]}>
-                <Text style={[Typography.caption, { color: colors.primary, fontWeight: '600' }]}>
+                <Text style={[Typography.caption, { color: colors.primary, fontFamily: Font.semibold }]}>
                   {alarms.filter((a) => a.is_active).length}/2 ฟรี
                 </Text>
               </View>
@@ -789,7 +789,7 @@ const styles = StyleSheet.create({
     gap: Spacing.lg,
   },
   heroRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
-  heroTitle: { fontSize: 20, fontWeight: '700', color: '#fff', marginTop: 4 },
+  heroTitle: { fontSize: 20, fontFamily: Font.bold, color: '#fff', marginTop: 4 },
   heroBellWrap: {
     width: 64, height: 64,
     backgroundColor: 'rgba(255,255,255,0.2)',
@@ -808,7 +808,7 @@ const styles = StyleSheet.create({
 
   // Sections
   section: { paddingHorizontal: Spacing.lg, gap: Spacing.sm, marginBottom: Spacing.md },
-  sectionTitle: { fontSize: 17, fontWeight: '700' },
+  sectionTitle: { fontSize: 17, fontFamily: Font.bold },
 
   // Interval Bell Card
   intervalCard: { borderRadius: Radius.lg, padding: Spacing.md },
@@ -824,7 +824,7 @@ const styles = StyleSheet.create({
     flex: 1, alignItems: 'center', gap: 3,
     padding: Spacing.sm, borderRadius: Radius.sm,
   },
-  intervalStatValue: { fontSize: 13, fontWeight: '700', textAlign: 'center' },
+  intervalStatValue: { fontSize: 13, fontFamily: Font.bold, textAlign: 'center' },
   intervalFooter: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   statusPill: {
     flexDirection: 'row', alignItems: 'center', gap: 5,
@@ -850,7 +850,7 @@ const styles = StyleSheet.create({
     width: 40, height: 40, borderRadius: Radius.sm,
     alignItems: 'center', justifyContent: 'center',
   },
-  alarmTime: { fontSize: 22, fontWeight: '700', letterSpacing: 1 },
+  alarmTime: { fontSize: 22, fontFamily: Font.bold, letterSpacing: 1 },
   alarmActions: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm },
   deleteBtn: {
     width: 32, height: 32, borderRadius: Radius.sm,
@@ -939,9 +939,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center', gap: Spacing.xl, paddingVertical: Spacing.sm,
   },
   timeColumn: { alignItems: 'center', gap: Spacing.sm },
-  timeArrow: { fontSize: 20, fontWeight: '700' },
-  timeValue: { fontSize: 48, fontWeight: '700', letterSpacing: 2 },
-  timeColon: { fontSize: 48, fontWeight: '300', marginBottom: 8 },
+  timeArrow: { fontSize: 20, fontFamily: Font.bold },
+  timeValue: { fontSize: 48, fontFamily: Font.bold, letterSpacing: 2 },
+  timeColon: { fontSize: 48, fontFamily: Font.light, marginBottom: 8 },
   soundOptions: { flexDirection: 'row', gap: Spacing.sm, flexWrap: 'wrap' },
   soundOption: { paddingHorizontal: Spacing.md, paddingVertical: Spacing.sm, borderRadius: Radius.full },
   daysRow: { flexDirection: 'row', gap: Spacing.sm },
